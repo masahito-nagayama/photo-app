@@ -3,13 +3,19 @@
   <%= render partial: 'users/profile' %>
   <!-- フォロワーリスト部分 -->
   <h1>フォロワー</h1>
+  <% if @users.any? %>
   <ul class="users">
+    <% @users.each do |user| %>
     <li>
-      <div style="background: url('https://dummyimage.com/200/b492cc/fff'); background-position: 50%; background-size: cover;" class="image"></div>
-      <a href="#">
-        <span class="name">田上士郎</span>
-      </a>
-      <a class="button" href="#">フォロー解除</a>
+      <div style="background: url('<%= image_url(user) %>'); background-position: 50%; background-size: cover;" class="image"></div>
+      <%= link_to profile_path(user) do %>
+        <span class="name"><%= user.name %></span>
+      <% end %>
+      <%= link_to user.followed_by?(current_user)? "フォロー解除": "フォローする", follow_path(user.id), class: "button" %>
     </li>
+    < % end %>
   </ul>
+  <% else %>
+    <p class="empty">ユーザーが存在しません。</p>
+  <% end %>  
 </div>
