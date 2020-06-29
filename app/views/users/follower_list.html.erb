@@ -13,7 +13,7 @@
       <% end %>
       <%= link_to user.followed_by?(current_user)? "フォロー解除": "フォローする", follow_path(user.id), class: "button" %>
     </li>
-    < % end %>
+    <% end %>
   </ul>
   <% else %>
     <p class="empty">ユーザーが存在しません。</p>

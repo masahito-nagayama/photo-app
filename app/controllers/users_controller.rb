@@ -128,12 +128,12 @@ class UsersController < ApplicationController
   #フォロワーリスト
   def follower_list
     @user = User.find(params[:id])
-    @users = User.where(id: Follower.where(user_id: @user.id).pluck(:follower_user_id))
+    @users = User.where(id: Follow.where(follow_user_id: @user.id).pluck(:user_id))
   end
   
   
     # 認証チェック
-  def authorizeq
+  def authorize
     redirect_to sign_in_path unless user_signed_in?
   end
   
