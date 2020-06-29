@@ -133,7 +133,7 @@ class UsersController < ApplicationController
   
   
     # 認証チェック
-  def authorize
+  def authorizeq
     redirect_to sign_in_path unless user_signed_in?
   end
   
