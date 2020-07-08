@@ -1,6 +1,7 @@
 <div class="top container">
   <% if @posts.any? %>
   <ul class="posts">
+    <div><%= page_entries_info @posts %></div>
     <% @posts.each do |post| %>
     <li>
             <!-- 投稿者のアイコン -->
@@ -66,6 +67,7 @@
       </div>    
     </li>
     <% end %>
+    <div><%= paginate @posts %></div>
   </ul>
   <% else %>
   <p class="empty">投稿がありません。</p>

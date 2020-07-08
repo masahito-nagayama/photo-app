@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     # トップページ
   def top
     if params[:word].present?
-      @posts = Post.where("caption like ?", "%#{params[:word]}%").order("id desc")
+      @posts = Post.where("caption like ?", "%#{params[:word]}%").order("id desc").page(params[:page])
     else
       @posts = Post.all.order("id desc").page(params[:page])
     end
